@@ -1,12 +1,76 @@
+@use "../../../../scss/" as *;
 .wrapper{
-    height:var(--default-layout-header-heaght, 60px);
+    height: $default-layout-header-heaght;
     width: 100%;
+    @include flex(flex-start, center);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
 }
 .inner{
     height:100%;
-    width:var( --default-layout-width, 1150px);
-    background-color: #ccc;
+    width: $default-layout-width;
+    // background-color: #ccc;
+    @include flex(center, space-between);
+}
+.search{
+    position: relative;
+    width: 361px;
+    height: $search-height;
+    padding-left: 16px;
+    display: flex;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: $search-border-radius;
+    border: 1.5px solid transparent;
+    input {
+        flex: 1;
+        height: 100%;
+        color: $black;
+        font-size: 1.6rem;
+        caret-color: $primary;
+        background-color: transparent;
+    }
+    input:not(:placeholder-shown) ~ .search-btn {//khi có text trong search thì css cho nút search
+        color: rgba(22, 24, 35, 0.75);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top:$search-top-spacer;
+        right:$search-button-width;
+        width: 1px;
+        height: calc(#{$search-height} - #{$search-top-spacer} * 2);
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+.clear,
+.loading {
+    position: absolute;
+    right: calc(#{$search-button-width} + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search-btn {
+    width: $search-button-width;
+    height: 100%;
+    border-top-right-radius: $search-border-radius;
+    border-bottom-right-radius: $search-border-radius;
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
 }

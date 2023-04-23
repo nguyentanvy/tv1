@@ -1,16 +1,18 @@
+@use "../../../scss/" as *;
 .wrapper{
-    display:flex;
+    @include flex(center, flex-start);
+    // display:flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
 }
 .container{
     width:1150px;
     display:flex;
-    min-height: 1000px;
+    min-height: $min-height;
 
 }
 .content{
     flex:1;
     background-color: antiquewhite;
-    min-height: 1000px;
+    min-height: $min-height;
 }

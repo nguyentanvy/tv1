@@ -1,5 +1,6 @@
+@use "../../../../scss/" as *;
 .wrapper{
     width:356px;
-    min-height: 1000px;
-    background-color:#fdf;
+    min-height: $min-height;
+    // background-color:#fdf;
 }
